@@ -1,0 +1,42 @@
+---
+// src/components/Navbar.astro
+---
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark">DA</span>
+      Diego Arriagada
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">Sobre mí</a></li>
+      <li><a href="#skills">Competencias</a></li>
+      <li><a href="#experience">Experiencia</a></li>
+      <li><a href="#education">Formación</a></li>
+      <li><a href="#contact">Contacto</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-btn" id="themeBtn" aria-label="Cambiar tema">🌙</button>
+      <a href="#contact" class="nav-cta">Contáctame</a>
+      <button class="menu-btn" id="menuBtn">☰</button>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // @ts-nocheck
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  menuBtn?.addEventListener('click', () => navLinks?.classList.toggle('open'));
+
+  const themeBtn = document.getElementById('themeBtn');
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  if (themeBtn) themeBtn.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+
+  themeBtn?.addEventListener('click', () => {
+    const theme = document.documentElement.getAttribute('data-theme');
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    if (themeBtn) themeBtn.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+  });
+</script>

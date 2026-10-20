@@ -1,0 +1,66 @@
+---
+// src/components/Hero.astro
+---
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <span class="badge">Disponible para nuevos desafíos</span>
+      <h1>Diego Arriagada</h1>
+      <div class="role">Jefe de Operaciones Logísticas y Administrativas</div>
+      <p class="tagline">
+        Profesional con más de 10 años de experiencia liderando equipos, optimizando procesos y controlando recursos en sectores de seguridad, logística y telecomunicaciones. Especialista en gestión operativa y control de inventarios.
+      </p>
+      <div class="hero-cta">
+        <a href="/DiegoArriagada-CV.pdf" download class="btn btn-primary">⬇️ Descargar CV</a>
+        <a href="#contact" class="btn btn-secondary">Hablemos</a>
+      </div>
+      <div class="hero-metrics">
+        <div>
+          <div class="metric-value" data-count="10" data-suffix="+">0</div>
+          <div class="metric-label">Años de Experiencia</div>
+        </div>
+        <div>
+          <div class="metric-value" data-count="16" data-suffix="">0</div>
+          <div class="metric-label">Equipos Liderados</div>
+        </div>
+        <div>
+          <div class="metric-value" data-count="602" data-suffix="">0</div>
+          <div class="metric-label">Activos Gestionados</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="photo-frame">
+        <img src="/diego.jpg" alt="Diego Arriagada" />
+        <div class="photo-badge">
+          <strong>Enfoque en Resultados</strong>
+          <span>Operaciones · Logística · Administración</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // @ts-nocheck
+  function animateCounters() {
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const target = parseInt(el.dataset.count, 10);
+      const suffix = el.dataset.suffix || '';
+      const duration = 1500;
+      const start = performance.now();
+      function step(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(target * eased) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }
+  const heroObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { animateCounters(); heroObserver.disconnect(); } });
+  }, { threshold: 0.5 });
+  const hero = document.querySelector('.hero');
+  if (hero) heroObserver.observe(hero);
+</script>

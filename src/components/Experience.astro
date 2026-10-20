@@ -1,0 +1,249 @@
+---
+// src/components/Experience.astro
+const EXPERIENCES = [
+  {
+    role: 'Guardia de Seguridad y apoyo administrativo',
+    company: 'CORPSECURITY • CONDOMINIO MIRADOR URBANO',
+    period: 'Feb 2026 – May 2026',
+    bullets: [
+      'Gestioné controles de acceso vehicular y peatonal, asegurando el registro detallado de incidencias operativas.',
+      'Elaboré reportes diarios de novedades y coordiné requerimientos administrativos directamente con la administración del condominio.'
+    ],
+    tags: ['Seguridad', 'Administración', 'Reportes']
+  },
+  {
+    role: 'Guardia de Seguridad y apoyo operativo',
+    company: 'ALIANZA • UNIVERSIDAD AUTÓNOMA TALCA',
+    period: 'May 2025 – Dic 2025',
+    bullets: [
+      'Coordiné diariamente las actividades del personal, supervisando asistencia, turnos y cumplimiento de protocolos junto a la jefatura de turno.',
+      'Elaboré bitácoras de control operativo y reportes de novedades para la jefatura, garantizando la trazabilidad de los turnos.'
+    ],
+    tags: ['Supervisión', 'Bitácoras', 'Protocolos']
+  },
+  {
+    role: 'Supervisor de Seguridad y Control Operativo',
+    company: 'SARGUS • AGROSUPER HUECHURABA',
+    period: 'Jun 2024 – Feb 2025',
+    bullets: [
+      'Gestioné la administración del personal: control riguroso de asistencia, validación de horas extras y novedades mediante el ERP ControlRoll.',
+      'Coordiné el control documental de guías de despacho, ingreso de proveedores y trazabilidad operativa en conjunto con Jefaturas de Logística.',
+      'Supervisé equipos en terreno y optimicé los recursos operativos para cumplir con los KPIs del servicio.'
+    ],
+    tags: ['Logística', 'KPIs', 'Supervisión', 'Trazabilidad']
+  },
+  {
+    role: 'Operador CCTV y Supervisor de turno',
+    company: 'ISEG • MALL CASA COSTANERA',
+    period: 'Jul 2023 – Abr 2024',
+    bullets: [
+      'Administré pautas, rotaciones de puestos y turnos del personal, gestionando asistencia y novedades del turno.',
+      'Elaboré y envié reportes ejecutivos diarios consolidando el desempeño operativo del personal en terreno para la jefatura de grupo.',
+      'Gestioné protocolos de autorización de ingreso para proveedores y el control de activos del centro comercial.'
+    ],
+    tags: ['CCTV', 'Reportes ejecutivos', 'Control de activos']
+  },
+  {
+    role: 'Operador CCTV y Supervisor de turno (Reemplazo)',
+    company: 'SANTIAGO DOWNTOWN • COMUNIDAD ENTEL PCS',
+    period: 'Mar 2023 – Jun 2023',
+    bullets: [
+      'Supervisé la asistencia, permisos y rotaciones del personal, gestionando la planificación de rondas y reportes de novedades.',
+      'Coordiné procedimientos de apertura, cierre y rondas de seguridad en conjunto con fuerzas de orden dentro de la comunidad.'
+    ],
+    tags: ['CCTV', 'Rondas', 'Coordinación']
+  },
+  {
+    role: 'Operador CCTV y analista de novedades',
+    company: 'MUNICIPALIDAD • COMUNA VITACURA',
+    period: 'Jun 2022 – Nov 2022',
+    bullets: [
+      'Gestioné en tiempo real un ecosistema de 602 activos a nivel comunal, asegurando la continuidad operativa.',
+      'Elaboré reportes ejecutivos de operación y soporte para la jefatura, analizando incidencias y desperfectos del sistema.'
+    ],
+    tags: ['CCTV', '602 activos', 'Análisis de incidencias']
+  },
+  {
+    role: 'Encargado de operaciones y Seguridad',
+    company: 'CONDOMINIO PARADOR DE FONTOVA',
+    period: 'Abr 2018 – Jun 2022',
+    bullets: [
+      'Responsable de la administración integral del condominio, control de accesos y coordinación con la administración.',
+      'Gestioné incidencias y elaboré reportes de novedades y requerimientos de mantenimiento.'
+    ],
+    tags: ['Administración integral', 'Control de accesos', 'Mantenimiento']
+  },
+  {
+    role: 'Operador CCTV',
+    company: 'COMUNIDAD EDIFICIO CAPITAL I & II',
+    period: 'Mar 2017 – Mar 2018',
+    bullets: [
+      'Gestioné el monitoreo de 414 activos y supervisé sistemas de alarma de incendio, con primera respuesta ante incidentes operativos.'
+    ],
+    tags: ['CCTV', '414 activos', 'Alarmas de incendio']
+  },
+  {
+    role: 'Guardia de Seguridad',
+    company: 'FEDERAL SEGURIDAD • CONDOMINIO LOMAS DE LA DEHESA',
+    period: 'Nov 2016 – Mar 2017',
+    bullets: [
+      'Apliqué controles rigurosos de entrada y salida de peatones y vehículos en instalación de alto estándar.',
+      'Aplicación estricta de protocolos de seguridad, registro de incidencias y atención a residentes, garantizando la continuidad del servicio.'
+    ],
+    tags: ['Control de acceso', 'Protocolos', 'Atención a residentes']
+  },
+  {
+    role: 'Soporte telefónico internet móvil y apoyo BackOffice',
+    company: 'I-LINE • PROYECTO VTR',
+    period: 'Sep 2015 – Oct 2016',
+    bullets: [
+      'Brindé soporte técnico y administrativo en sistemas VTR, gestionando configuraciones de red y resolviendo incidencias de clientes.'
+    ],
+    tags: ['Soporte técnico', 'BackOffice', 'VTR']
+  },
+  {
+    role: 'Coordinador de Operaciones y BackOffice (jefe de Técnicos)',
+    company: 'COASIN • PROYECTO VTR',
+    period: 'Mar 2015 – Ago 2015',
+    bullets: [
+      'Planifique y coordiné las rutas diarias de un equipo de 14 técnicos, cargando trabajos en el sistema y supervisando el cumplimiento de objetivos de despacho.',
+      'Apoyé operativamente en terreno, gestionando novedades y asegurando la eficiencia del servicio.'
+    ],
+    tags: ['14 técnicos', 'Planificación de rutas', 'Despacho']
+  },
+  {
+    role: 'Coordinador de Operaciones (jefe de Técnicos)',
+    company: 'ALSAFAT • PROYECTO CLARO',
+    period: 'May 2013 – Oct 2013',
+    bullets: [
+      'Asigné cargas de trabajo diarias a equipos de 14 a 16 técnicos, gestionando novedades operativas y apoyando en la resolución de incidencias en terreno.'
+    ],
+    tags: ['16 técnicos', 'Operaciones', 'Claro']
+  },
+  {
+    role: 'Coordinador de Operaciones y BackOffice (jefe de Técnicos)',
+    company: 'LEGOCOM • PROYECTO VTR',
+    period: 'Nov 2011 – Abr 2013',
+    bullets: [
+      'Planifiqué y coordiné diariamente las rutas de trabajo para un equipo de 14 técnicos en el área de conexiones.',
+      'Supervisé el cumplimiento de los objetivos de despacho y brindé apoyo operativo en terreno.'
+    ],
+    tags: ['14 técnicos', 'Rutas', 'Despacho']
+  },
+  {
+    role: 'Surtidor con Transpaleta Eléctrica',
+    company: 'WALMART LTS',
+    period: 'May 2011 – Oct 2011',
+    bullets: [
+      'Gestioné el surtido de mercadería y el traslado de pallets con transpaleta eléctrica, apoyando en la recepción y acomodo en mega bodegas.'
+    ],
+    tags: ['Transpaleta', 'Bodega', 'Surtido']
+  },
+  {
+    role: 'Maestro Pizzero y Atención al Cliente',
+    company: 'MASTERPIZZA',
+    period: 'Sep 2010 – Abr 2011',
+    bullets: [
+      'Administré el manejo de caja (venta, cuadre y cierre diario), control de insumos y abastecimiento del local.',
+      'Atendí clientes y aseguré el cumplimiento de los estándares de servicio y preparación.'
+    ],
+    tags: ['Manejo de caja', 'Atención al cliente', 'Inventario']
+  },
+  {
+    role: 'Encargado de Local Comercial',
+    company: 'JOYERIA',
+    period: 'Ago 2009 – Ago 2010',
+    bullets: [
+      'Gestioné el control de inventario, reposición de stock, negociación con proveedores y atención directa a clientes y mayoristas.'
+    ],
+    tags: ['Inventario', 'Proveedores', 'Ventas']
+  },
+  {
+    role: 'Asistente de Despacho / Producción',
+    company: 'PEIDE INTERNATIONAL',
+    period: 'Mar 2004 – Jul 2009',
+    bullets: [
+      'Optimicé el armado y alistamiento de pedidos, verificando cantidades y condiciones para asegurar despachos sin errores.',
+      'Gestioné la recepción de mercancía, contrastando contra guías y facturas, y actualizando inventarios físicos y en sistema.',
+      'Coordiné el abastecimiento de materiales para producción, evitando desabastecimientos en línea y manteniendo el orden en bodega.'
+    ],
+    tags: ['Despacho', 'Inventario', 'Recepción', 'Bodega']
+  }
+];
+---
+<section id="experience" class="section">
+  <div class="container">
+    <h2 class="section-title">Experiencia Profesional</h2>
+    <p class="section-subtitle">Más de una década construyendo operaciones más eficientes y equipos más sólidos.</p>
+
+    <div class="timeline" id="timeline">
+      {EXPERIENCES.slice(0, 6).map((exp) => (
+        <div class="exp-item">
+          <div class="exp-card">
+            <div class="exp-head">
+              <div>
+                <div class="exp-role">{exp.role}</div>
+                <div class="exp-company">{exp.company}</div>
+              </div>
+              <span class="exp-period">{exp.period}</span>
+            </div>
+            <div class="exp-desc">
+              <ul>
+                {exp.bullets.map(b => <li>{b}</li>)}
+              </ul>
+            </div>
+            <div class="exp-tags">
+              {exp.tags.map(t => <span class="exp-tag">{t}</span>)}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div style="text-align: center; margin-top: 2rem;">
+      <button id="btnVerMas" class="btn btn-secondary">
+        ⬇️ Ver trayectoria completa ({EXPERIENCES.length - 6} roles anteriores)
+      </button>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ EXPERIENCES }}>
+  // @ts-nocheck
+  const timeline = document.getElementById('timeline');
+  const btnVerMas = document.getElementById('btnVerMas');
+  let mostrandoTodo = false;
+
+  btnVerMas?.addEventListener('click', () => {
+    mostrandoTodo = !mostrandoTodo;
+    const expToShow = mostrandoTodo ? EXPERIENCES : EXPERIENCES.slice(0, 6);
+    
+    timeline.innerHTML = expToShow.map(exp => `
+      <div class="exp-item">
+        <div class="exp-card">
+          <div class="exp-head">
+            <div>
+              <div class="exp-role">${exp.role}</div>
+              <div class="exp-company">${exp.company}</div>
+            </div>
+            <span class="exp-period">${exp.period}</span>
+          </div>
+          <div class="exp-desc">
+            <ul>${exp.bullets.map(b => `<li>${b}</li>`).join('')}</ul>
+          </div>
+          <div class="exp-tags">
+            ${exp.tags.map(t => `<span class="exp-tag">${t}</span>`).join('')}
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    btnVerMas.innerHTML = mostrandoTodo 
+      ? '⬆️ Ocultar experiencia antigua' 
+      : `⬇️ Ver trayectoria completa (${EXPERIENCES.length - 6} roles anteriores)`;
+
+    if (!mostrandoTodo) {
+      document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+</script>
