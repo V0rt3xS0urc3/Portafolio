@@ -242,10 +242,10 @@ const EXPERIENCES = [
     if (mostrandoTodo) {
       // Inyectamos el título antes de las experiencias de la sección antigua (índice 9 es I-LINE)
       const tituloPrevio = `<h3 style="text-align:center; margin: 2rem 0 1rem; color: var(--text-main); font-size: 1.2rem;">Experiencia Previa en Logística, Bodega y Operaciones (2004-2016)</h3>`;
-      // Cortamos el HTML en dos para meter el título justo antes de la experiencia 10 (índice 9)
+              // Cortamos el HTML en dos para meter el título justo antes de I-LINE (posición 10)
       const partes = htmlContent.split('<div class="exp-item">');
-      if (partes.length > 9) {
-        partes[9] = tituloPrevio + '<div class="exp-item">' + partes[9];
+      if (partes.length > 10) {
+        partes[10] = tituloPrevio + '<div class="exp-item">' + partes[10];
         htmlContent = partes.join('');
       }
     }
