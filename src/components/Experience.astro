@@ -176,6 +176,7 @@ const EXPERIENCES = [
     <h2 class="section-title">Experiencia Profesional</h2>
     <p class="section-subtitle">Más de una década construyendo operaciones más eficientes y equipos más sólidos.</p>
 
+    <!-- Mantenemos el contenedor original con la clase timeline -->
     <div class="timeline" id="timeline">
       {EXPERIENCES.slice(0, 6).map((exp) => (
         <div class="exp-item">
@@ -214,49 +215,58 @@ const EXPERIENCES = [
   const btnVerMas = document.getElementById('btnVerMas');
   let mostrandoTodo = false;
 
-  btnVerMas?.addEventListener('click', () => {
-    mostrandoTodo = !mostrandoTodo;
-    const expToShow = mostrandoTodo ? EXPERIENCES : EXPERIENCES.slice(0, 6);
-    
-    // Agregamos un encabezado visual cuando se muestran todas las experiencias antiguas
-    let htmlContent = expToShow.map(exp => `
-      <div class="exp-item">
-        <div class="exp-card">
-          <div class="exp-head">
-            <div>
-              <div class="exp-role">${exp.role}</div>
-              <div class="exp-company">${exp.company}</div>
-            </div>
-            <span class="exp-period">${exp.period}</span>
+  // Función para crear el HTML de una tarjeta
+  const crearTarjetaHTML = (exp) => `
+    <div class="exp-item">
+      <div class="exp-card">
+        <div class="exp-head">
+          <div>
+            <div class="exp-role">${exp.role}</div>
+            <div class="exp-company">${exp.company}</div>
           </div>
-          <div class="exp-desc">
-            <ul>${exp.bullets.map(b => `<li>${b}</li>`).join('')}</ul>
-          </div>
-          <div class="exp-tags">
-            ${exp.tags.map(t => `<span class="exp-tag">${t}</span>`).join('')}
-          </div>
+          <span class="exp-period">${exp.period}</span>
+        </div>
+        <div class="exp-desc">
+          <ul>${exp.bullets.map(b => `<li>${b}</li>`).join('')}</ul>
+        </div>
+        <div class="exp-tags">
+          ${exp.tags.map(t => `<span class="exp-tag">${t}</span>`).join('')}
         </div>
       </div>
-    `).join('');
+    </div>
+  `;
+
+  btnVerMas?.addEventListener('click', () => {
+    mostrandoTodo = !mostrandoTodo;
 
     if (mostrandoTodo) {
-      // Inyectamos el título antes de las experiencias de la sección antigua (índice 9 es I-LINE)
-      const tituloPrevio = `<h3 style="text-align:center; margin: 2rem 0 1rem; color: var(--text-main); font-size: 1.2rem;">Experiencia Previa en Logística, Bodega y Operaciones (2004-2016)</h3>`;
-              // Cortamos el HTML en dos para meter el título justo antes de I-LINE (posición 10)
-      const partes = htmlContent.split('<div class="exp-item">');
-      if (partes.length > 10) {
-        partes[10] = tituloPrevio + '<div class="exp-item">' + partes[10];
-        htmlContent = partes.join('');
+      // LÓGICA PARA EXPANDIR
+      let htmlParaAgregar = '';
+
+      // Agregamos las tarjetas de la 7 a la 9 (Fontova, Capital I & II, Federal)
+      htmlParaAgregar += EXPERIENCES.slice(6, 9).map(crearTarjetaHTML).join('');
+
+      // Agregamos el Título de Logística
+      htmlParaAgregar += `<h3 style="text-align:center; margin: 2rem 0 1rem; color: var(--text-main); font-size: 1.2rem;">Experiencia Previa en Logística, Bodega y Operaciones (2004-2016)</h3>`;
+
+      // Agregamos las tarjetas de la 10 en adelante (I-LINE hasta Peide)
+      htmlParaAgregar += EXPERIENCES.slice(9).map(crearTarjetaHTML).join('');
+
+      // Usamos insertAdjacentHTML para NO borrar el contenedor original (así conserva el CSS de Astro)
+      timeline.insertAdjacentHTML('beforeend', htmlParaAgregar);
+      
+      btnVerMas.innerHTML = '⬆️ Ocultar experiencia antigua';
+
+    } else {
+      // LÓGICA PARA COLAPSAR
+      // Borramos todas las tarjetas extra
+      while (timeline.children.length > 6) {
+        timeline.removeChild(timeline.lastChild);
       }
-    }
-
-    timeline.innerHTML = htmlContent;
-
-    btnVerMas.innerHTML = mostrandoTodo 
-      ? '⬆️ Ocultar experiencia antigua' 
-      : `⬇️ Ver trayectoria completa (${EXPERIENCES.length - 6} roles anteriores)`;
-
-    if (!mostrandoTodo) {
+      
+      btnVerMas.innerHTML = `⬇️ Ver trayectoria completa (${EXPERIENCES.length - 6} roles anteriores)`;
+      
+      // Hacemos scroll hacia arriba de la sección
       document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' });
     }
   });
