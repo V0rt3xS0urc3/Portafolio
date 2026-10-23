@@ -7,17 +7,23 @@
       <span class="logo-mark">DA</span>
       Diego Arriagada
     </a>
+    
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">Sobre mí</a></li>
-      <li><a href="#skills">Competencias</a></li>
       <li><a href="#experience">Experiencia</a></li>
       <li><a href="#education">Formación</a></li>
       <li><a href="#contact">Contacto</a></li>
     </ul>
+    
     <div class="nav-actions">
-      <button class="theme-btn" id="themeBtn" aria-label="Cambiar tema">🌙</button>
-      <a href="#contact" class="nav-cta">Contáctame</a>
-      <button class="menu-btn" id="menuBtn">☰</button>
+      <button class="theme-btn" id="themeBtn" aria-label="Cambiar tema claro/oscuro">🌙</button>
+      
+      <!-- CTA principal: Descargar CV (mucho más efectivo para conversión) -->
+      <a href="/DiegoArriagada-CV.pdf" download class="nav-cta">📄 Descargar CV</a>
+      
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menú de navegación" aria-expanded="false">
+        ☰
+      </button>
     </div>
   </div>
 </nav>
@@ -26,17 +32,51 @@
   // @ts-nocheck
   const menuBtn = document.getElementById('menuBtn');
   const navLinks = document.getElementById('navLinks');
-  menuBtn?.addEventListener('click', () => navLinks?.classList.toggle('open'));
+  
+  // Toggle del menú móvil
+  menuBtn?.addEventListener('click', () => {
+    const isOpen = navLinks?.classList.toggle('open');
+    if (menuBtn) {
+      menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      menuBtn.textContent = isOpen ? '✕' : '☰'; // Cambia el ícono a una X cuando está abierto
+    }
+  });
 
+  // Cerrar menú automáticamente al hacer clic en un enlace (Mejora UX en móvil)
+  navLinks?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      if (menuBtn) {
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.textContent = '☰';
+      }
+    });
+  });
+
+  // Lógica robusta de tema (Dark/Light)
   const themeBtn = document.getElementById('themeBtn');
-  const currentTheme = document.documentElement.getAttribute('data-theme');
-  if (themeBtn) themeBtn.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+  const savedTheme = localStorage.getItem('theme');
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  
+  // Determinar el tema inicial: guardado > preferencia del sistema > 'light' por defecto
+  const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+  
+  // Aplicar tema al cargar la página
+  document.documentElement.setAttribute('data-theme', initialTheme);
+  if (themeBtn) {
+    themeBtn.textContent = initialTheme === 'dark' ? '☀️' : '🌙';
+  }
 
+  // Evento para cambiar el tema
   themeBtn?.addEventListener('click', () => {
-    const theme = document.documentElement.getAttribute('data-theme');
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
-    if (themeBtn) themeBtn.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    
+    if (themeBtn) {
+      themeBtn.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    }
   });
 </script>
