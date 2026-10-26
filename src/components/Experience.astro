@@ -16,7 +16,7 @@ const EXPERIENCES = [
     company: 'ALIANZA • UNIVERSIDAD AUTÓNOMA TALCA',
     period: '05-2025 – 12-2025',
     bullets: [
-      'Coordiné diariamente las actividades del personal, supervisando asistencia, turnos y cumplimiento de protocolos junto a la jefatura de turno  en GeoVictoria.',
+      'Coordiné diariamente las actividades del personal, supervisando asistencia, turnos y cumplimiento de protocolos junto a la jefatura de turno en GeoVictoria.',
       'Elaboré bitácoras de control operativo y reportes de novedades para la jefatura, garantizando la trazabilidad de los turnos.'
     ],
     tags: ['Supervisión', 'Bitácoras', 'Protocolos']
@@ -26,7 +26,7 @@ const EXPERIENCES = [
     company: 'SARGUS • AGROSUPER HUECHURABA',
     period: '06-2024 – 02-2025',
     bullets: [
-      'Gestioné la administración del personal: control riguroso de asistencia, validación de horas extras y novedades mediante el ERP ControlRoll.',
+      'Gestioné la administración del personal: control riguroso de asistencia, validación de horas extras y novedades mediante sistema ERP.',
       'Ejecuté el control físico y documental de carga en camiones y camionetas, verificando guías de despacho, cantidad de pallets, horarios y revisión exhaustiva (incluyendo fondo de containers) para garantizar que salieran completamente vacíos.',
       'Aseguré el cierre y protección perimetral de la instalación: activación de cercos eléctricos, armado de alarmas, cierre de portones y rondas preventivas.',
       'Realicé el conteo y control diario de la flota estacionada en la instalación, garantizando la trazabilidad operativa en conjunto con las Jefaturas de Logística.'
@@ -205,7 +205,7 @@ const EXPERIENCES = [
       ))}
     </div>
 
-    <div style="text-align: center; margin-top: 2rem;">
+    <div class="exp-actions">
       <button id="btnVerMas" class="btn btn-secondary">
         ⬇️ Ver trayectoria completa ({EXPERIENCES.length - 6} roles anteriores)
       </button>
@@ -250,8 +250,8 @@ const EXPERIENCES = [
       // Agregamos las tarjetas de la 7 a la 9 (Fontova, Capital I & II, Federal)
       htmlParaAgregar += EXPERIENCES.slice(6, 9).map(crearTarjetaHTML).join('');
 
-      // Agregamos el Título de Logística
-      htmlParaAgregar += `<h3 style="text-align:center; margin: 2.5rem 0 1.5rem; color: var(--text-main); font-size: 1.2rem; font-weight: 700; border-top: 1px solid var(--border); padding-top: 1.5rem;">Experiencia Previa en Logística, Bodega y Operaciones (2004-2016)</h3>`;
+      // Agregamos el Título de Logística (Ahora usa una clase en lugar de estilo en línea)
+      htmlParaAgregar += `<h3 class="exp-section-title">Experiencia Previa en Logística, Bodega y Operaciones (2004-2016)</h3>`;
 
       // Agregamos las tarjetas de la 10 en adelante (I-LINE hasta Peide)
       htmlParaAgregar += EXPERIENCES.slice(9).map(crearTarjetaHTML).join('');

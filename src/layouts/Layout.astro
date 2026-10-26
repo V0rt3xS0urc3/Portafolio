@@ -85,6 +85,27 @@
       .nav-links { display: flex; gap: 2rem; align-items: center; }
       .nav-links a { font-size: 0.9rem; color: var(--text-muted); font-weight: 600; transition: color 0.2s; }
       .nav-links a:hover { color: var(--accent); }
+      
+      /* Adiciones Navbar (Próximamente) */
+      .nav-item-upcoming {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        cursor: default;
+      }
+      .nav-badge-upcoming {
+        font-size: 0.65rem;
+        background: var(--accent-light);
+        color: var(--accent);
+        padding: 0.15rem 0.4rem;
+        border-radius: 4px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+      }
+
       .nav-actions { display: flex; gap: 1rem; align-items: center; }
       .theme-btn {
         background: transparent; border: 1px solid var(--border); color: var(--text);
@@ -149,22 +170,13 @@
       .chips { display: flex; flex-wrap: wrap; gap: 0.6rem; }
       .chip { padding: 0.5rem 1rem; border-radius: 8px; background: var(--accent-light); color: var(--accent); font-size: 0.85rem; font-weight: 600; }
 
-      /* ============ SKILLS (CORREGIDO) ============ */
+      /* ============ SKILLS ============ */
       .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-      
       .skill-card { 
-        background: var(--bg-soft); 
-        border: 1px solid var(--border); 
-        border-radius: 16px; 
-        padding: 2rem; 
-        transition: all 0.3s ease; 
-        box-shadow: var(--shadow); 
+        background: var(--bg-soft); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; 
+        transition: all 0.3s ease; box-shadow: var(--shadow); 
       }
-      .skill-card:hover { 
-        transform: translateY(-5px); 
-        border-color: var(--accent); 
-        box-shadow: 0 15px 30px rgba(29, 78, 216, 0.15); 
-      }
+      .skill-card:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 15px 30px rgba(29, 78, 216, 0.15); }
       .skill-icon { 
         width: 50px; height: 50px; background: var(--accent-light); color: var(--accent); 
         border-radius: 12px; display: grid; place-items: center; font-size: 1.5rem; margin-bottom: 1.5rem; 
@@ -172,151 +184,37 @@
       .skill-card h4 { font-size: 1.15rem; margin-bottom: 0.8rem; color: var(--text); }
       .skill-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
       
-      .tech-extra { 
-        background: var(--bg-soft); 
-        border: 1px dashed var(--border); 
-        border-radius: 16px; 
-        padding: 2.5rem 2rem; 
-        margin-top: 3rem; 
-      }
-      .tech-extra h4 { 
-        display: flex; align-items: center; justify-content: center; gap: 0.5rem; 
-        margin-bottom: 1rem; color: var(--text); font-size: 1.2rem;
-      }
-      .tech-extra p { 
-        font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem; 
-        text-align: center; max-width: 700px; margin-left: auto; margin-right: auto; 
-      }
+      .tech-extra { background: var(--bg-soft); border: 1px dashed var(--border); border-radius: 16px; padding: 2.5rem 2rem; margin-top: 3rem; }
+      .tech-extra h4 { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 1rem; color: var(--text); font-size: 1.2rem; }
+      .tech-extra p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem; text-align: center; max-width: 700px; margin-left: auto; margin-right: auto; }
       .tech-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; }
       
-      /* CHIPS DE TECNOLOGÍA: Estilo base */
       .tech-chip { 
-        font-size: 0.8rem; padding: 0.45rem 1rem; border-radius: 9999px; 
-        background: var(--accent-light); 
-        border: 1px solid var(--accent); 
-        color: var(--accent); 
-        font-weight: 600; transition: all 0.2s ease;
+        font-size: 0.8rem; padding: 0.45rem 1rem; border-radius: 9999px; background: var(--accent-light); 
+        border: 1px solid var(--accent); color: var(--accent); font-weight: 600; transition: all 0.2s ease;
       }
-      /* Ajuste específico para modo oscuro */
-      [data-theme="dark"] .tech-chip {
-        color: #60a5fa; 
-        border-color: #60a5fa;
-        background: rgba(96, 165, 250, 0.15);
-      }
-      /* Hover: SOLO aquí se aplica el fondo azul sólido */
-      .tech-chip:hover {
-        background: var(--accent);
-        color: white;
-        border-color: var(--accent);
-        transform: translateY(-2px);
-      }
-      [data-theme="dark"] .tech-chip:hover {
-        background: #3b82f6;
-      }
+      [data-theme="dark"] .tech-chip { color: #60a5fa; border-color: #60a5fa; background: rgba(96, 165, 250, 0.15); }
+      .tech-chip:hover { background: var(--accent); color: white; border-color: var(--accent); transform: translateY(-2px); }
+      [data-theme="dark"] .tech-chip:hover { background: #3b82f6; }
 
-      /* Chips destacados (OS-10 y Red Team): Color PÚRPURA diferenciador */
-      .tech-chip.highlight {
-        background: #f3e8ff; /* Lila suave en modo claro */
-        color: #6b21a8;      /* Púrpura oscuro */
-        border-color: #a855f7; /* Borde púrpura */
-        font-weight: 700;
-      }
-      [data-theme="dark"] .tech-chip.highlight {
-        background: rgba(168, 85, 247, 0.2); /* Púrpura translúcido en modo oscuro */
-        color: #d8b4fe;                      /* Lila brillante */
-        border-color: #a855f7;
-      }
-      /* Hover específico para los destacados: púrpura sólido */
-      .tech-chip.highlight:hover {
-        background: #a855f7;
-        color: white;
-        border-color: #a855f7;
-        transform: translateY(-2px);
-      }
+      .tech-chip.highlight { background: #f3e8ff; color: #6b21a8; border-color: #a855f7; font-weight: 700; }
+      [data-theme="dark"] .tech-chip.highlight { background: rgba(168, 85, 247, 0.2); color: #d8b4fe; border-color: #a855f7; }
+      .tech-chip.highlight:hover { background: #a855f7; color: white; border-color: #a855f7; transform: translateY(-2px); }
 
-            /* ============ PROJECTS ============ */
-      .projects-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-top: 2rem;
-      }
-
+      /* ============ PROJECTS ============ */
+      .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
       .project-card {
-        background: var(--bg-soft);
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        padding: 2rem;
-        transition: all 0.3s ease;
-        box-shadow: var(--shadow);
-        display: flex;
-        flex-direction: column;
+        background: var(--bg-soft); border: 1px solid var(--border); border-radius: 16px; padding: 2rem;
+        transition: all 0.3s ease; box-shadow: var(--shadow); display: flex; flex-direction: column;
       }
-
-      .project-card:hover {
-        transform: translateY(-5px);
-        border-color: var(--accent);
-        box-shadow: 0 15px 30px rgba(29, 78, 216, 0.15);
-      }
-
-      .project-icon {
-        width: 50px;
-        height: 50px;
-        background: var(--accent-light);
-        color: var(--accent);
-        border-radius: 12px;
-        display: grid;
-        place-items: center;
-        margin-bottom: 1.5rem;
-      }
-
-      .project-title {
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: var(--text);
-        margin-bottom: 0.8rem;
-      }
-
-      .project-desc {
-        font-size: 0.95rem;
-        color: var(--text-muted);
-        line-height: 1.6;
-        margin-bottom: 1.5rem;
-        flex-grow: 1; /* Empuja el contenido hacia abajo para alinear los botones */
-      }
-
-      .project-tools {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .project-tool-tag {
-        font-size: 0.75rem;
-        padding: 0.3rem 0.8rem;
-        border-radius: 6px;
-        background: var(--bg);
-        border: 1px solid var(--border);
-        color: var(--text-muted);
-        font-weight: 600;
-      }
-
-      .project-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: var(--accent);
-        font-weight: 600;
-        font-size: 0.9rem;
-        text-decoration: none;
-        transition: gap 0.2s ease;
-      }
-
-      .project-link:hover {
-        gap: 0.8rem;
-        text-decoration: underline;
-      }
+      .project-card:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 15px 30px rgba(29, 78, 216, 0.15); }
+      .project-icon { width: 50px; height: 50px; background: var(--accent-light); color: var(--accent); border-radius: 12px; display: grid; place-items: center; margin-bottom: 1.5rem; }
+      .project-title { font-size: 1.2rem; font-weight: 700; color: var(--text); margin-bottom: 0.8rem; }
+      .project-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1; }
+      .project-tools { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+      .project-tool-tag { font-size: 0.75rem; padding: 0.3rem 0.8rem; border-radius: 6px; background: var(--bg); border: 1px solid var(--border); color: var(--text-muted); font-weight: 600; }
+      .project-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent); font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: gap 0.2s ease; }
+      .project-link:hover { gap: 0.8rem; text-decoration: underline; }
 
       /* ============ EXPERIENCE ============ */
       .timeline { position: relative; padding-left: 2rem; }
@@ -338,6 +236,13 @@
       .exp-desc li { margin-bottom: 0.5rem; }
       .exp-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
       .exp-tag { font-size: 0.75rem; padding: 0.3rem 0.8rem; border-radius: 6px; background: var(--bg); border: 1px solid var(--border); color: var(--text-muted); font-weight: 600; }
+      
+      /* Adiciones Experience (Botón y Título de sección expandible) */
+      .exp-actions { text-align: center; margin-top: 2rem; }
+      .exp-section-title {
+        text-align: center; margin: 2.5rem 0 1.5rem; color: var(--text);
+        font-size: 1.2rem; font-weight: 700; border-top: 1px solid var(--border); padding-top: 1.5rem;
+      }
 
       /* ============ EDUCACIÓN ============ */
       .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
@@ -355,9 +260,59 @@
       .btn-white:hover { background: #f1f5f9; transform: translateY(-2px); }
       .btn-outline { background: transparent; color: white; border: 1px solid rgba(255, 255, 255, 0.5); }
       .btn-outline:hover { background: rgba(255, 255, 255, 0.1); border-color: white; }
+      
+      /* Adiciones Contacto (Links directos) */
+      .contact-direct { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.2); }
+      .contact-direct > p { font-size: 0.95rem; color: rgba(255, 255, 255, 0.9); margin-bottom: 0.8rem; }
+      .contact-links { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
+      .contact-link {
+        color: white; text-decoration: none; font-weight: 600; display: flex;
+        align-items: center; gap: 0.4rem; font-size: 1.05rem; transition: opacity 0.2s ease;
+      }
+      .contact-link:hover { opacity: 0.8; text-decoration: underline; }
 
       /* ============ FOOTER ============ */
-      footer { padding: 2rem 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 0.9rem; }
+      .footer-main { background: var(--bg-soft); border-top: 1px solid var(--border); padding: 2rem 0; margin-top: 3rem; }
+      .footer-content { text-align: center; }
+      .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+      .footer-link { color: var(--text); text-decoration: none; font-weight: 500; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
+      .footer-link:hover { color: var(--accent); }
+      .footer-copyright { font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--text); }
+      .footer-disclaimer { font-size: 0.75rem; color: var(--text-muted); opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.4; }
+
+      /* ============ WHATSAPP FLOAT BUTTON ============ */
+      .whatsapp-float {
+        position: fixed; bottom: 2rem; right: 2rem; width: 60px; height: 60px;
+        background-color: #25D366; color: white; border-radius: 50%;
+        display: grid; place-items: center; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        z-index: 9999; transition: all 0.3s ease; text-decoration: none;
+      }
+      .whatsapp-float:hover { transform: scale(1.1) translateY(-3px); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6); background-color: #1ebc57; }
+      @media (max-width: 768px) {
+        .whatsapp-float { width: 55px; height: 55px; bottom: 1.5rem; right: 1.5rem; }
+      }
+
+      /* ============ SERVICES ============ */
+      .services-grid {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem; margin-top: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;
+      }
+      .service-card {
+        background: var(--bg-soft); border: 2px solid var(--accent); border-radius: 16px; padding: 2.5rem;
+        transition: all 0.3s ease; box-shadow: var(--shadow); display: flex; flex-direction: column; text-align: center;
+      }
+      .service-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(29, 78, 216, 0.2); }
+      .service-icon { width: 60px; height: 60px; background: var(--accent); color: white; border-radius: 50%; display: grid; place-items: center; margin: 0 auto 1.5rem; }
+      .service-title { font-size: 1.3rem; font-weight: 700; color: var(--text); margin-bottom: 1rem; }
+      .service-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem; }
+      .service-features { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2rem; text-align: left; }
+      .feature-tag { font-size: 0.9rem; color: var(--text); font-weight: 500; }
+      .service-cta {
+        display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+        background: #25D366; color: white; font-weight: 700; font-size: 1rem; padding: 0.9rem 1.5rem;
+        border-radius: 8px; text-decoration: none; transition: all 0.2s ease;
+      }
+      .service-cta:hover { background: #1ebc57; transform: scale(1.02); }
 
       /* ============ RESPONSIVE ============ */
       @media (max-width: 900px) {
