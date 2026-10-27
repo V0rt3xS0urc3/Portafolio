@@ -4,37 +4,40 @@
 <section class="hero">
   <div class="container hero-grid">
     <div class="hero-content">
-      <span class="badge">Disponible para nuevos desafíos</span>
+      <span class="badge">Disponible para roles en Logística y Control de Gestión</span>
       <h1>Diego Arriagada</h1>
-      <div class="role">Jefe de Operaciones Logísticas y Administrativas</div>
+      <div class="role">Profesional en Logística, Bodega y Operaciones | Control Operativo</div>
       <p class="tagline">
-        Profesional con más de 10 años de experiencia liderando equipos, optimizando procesos y controlando recursos en sectores de seguridad, logística y telecomunicaciones. Especialista en gestión operativa y control de inventarios.
+        Profesional con más de <strong>22 años de experiencia</strong> liderando equipos de hasta 16 personas, optimizando procesos y gestionando la trazabilidad de despachos mediante ERP. Actualmente complemento mi visión práctica de terreno con formación activa en <strong>Excel Avanzado, Power BI, SQL y SAP</strong> para aportar una visión analítica y de mejora continua al Control de Gestión.
       </p>
+      
       <div class="hero-cta">
         <a href="/DiegoArriagada-CV.pdf" download class="btn btn-primary">⬇️ Descargar CV</a>
-        <a href="#contact" class="btn btn-secondary">Hablemos</a>
+        <a href="#contact" class="btn btn-secondary">📩 Contactar</a>
       </div>
+
       <div class="hero-metrics">
         <div>
-          <div class="metric-value" data-count="10" data-suffix="+">0</div>
+          <div class="metric-value" data-count="22" data-suffix="+">0</div>
           <div class="metric-label">Años de Experiencia</div>
         </div>
         <div>
           <div class="metric-value" data-count="16" data-suffix="">0</div>
-          <div class="metric-label">Equipos Liderados</div>
+          <div class="metric-label">Personas en equipos liderados</div>
         </div>
         <div>
-          <div class="metric-value" data-count="602" data-suffix="">0</div>
-          <div class="metric-label">Activos Gestionados</div>
+          <div class="metric-value" data-count="998" data-suffix="">0</div>
+          <div class="metric-label">Activos gestionados en tiempo real</div>
         </div>
       </div>
     </div>
+    
     <div class="hero-photo">
       <div class="photo-frame">
-        <img src="/diego.jpg" alt="Diego Arriagada" />
+        <img src="/diego.jpg" alt="Diego Arriagada - Profesional en Logística y Operaciones" />
         <div class="photo-badge">
           <strong>Enfoque en Resultados</strong>
-          <span>Operaciones · Logística · Administración</span>
+          <span>Operaciones · Control de Gestión · Datos</span>
         </div>
       </div>
     </div>
@@ -49,18 +52,29 @@
       const suffix = el.dataset.suffix || '';
       const duration = 1500;
       const start = performance.now();
+      
       function step(now) {
         const progress = Math.min((now - start) / duration, 1);
         const eased = 1 - Math.pow(1 - progress, 3);
         el.textContent = Math.floor(target * eased) + suffix;
-        if (progress < 1) requestAnimationFrame(step);
+        
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        }
       }
       requestAnimationFrame(step);
     });
   }
+
   const heroObserver = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { animateCounters(); heroObserver.disconnect(); } });
-  }, { threshold: 0.5 });
+    entries.forEach(e => { 
+      if (e.isIntersecting) { 
+        animateCounters(); 
+        heroObserver.disconnect();
+      } 
+    });
+  }, { threshold: 0.3 });
+
   const hero = document.querySelector('.hero');
   if (hero) heroObserver.observe(hero);
 </script>

@@ -1,0 +1,51 @@
+---
+// src/components/Projects.astro
+const PROJECTS = [
+  {
+    title: 'Modelo de Control de Gestión y Flujo de Caja',
+    description: 'Desarrollo de un modelo financiero dinámico para la proyección de ingresos, costos y cálculo de KPIs operativos. Incluye automatización de fórmulas complejas y limpieza de datos.',
+    tools: ['Excel Avanzado', 'Finanzas', 'Automatización con IA'],
+    githubLink: 'https://github.com/V0rt3xS0urc3/control-de-gestion-data-labs'
+  },
+  {
+    title: 'Dashboard de KPIs Logísticos y de Ventas',
+    description: 'Creación de un tablero de mando interactivo para visualizar métricas clave de Supply Chain (rotación de inventario, cumplimiento de despachos) y análisis de desviaciones.',
+    tools: ['Power BI', 'DAX', 'Power Query'],
+    githubLink: 'https://github.com/V0rt3xS0urc3/control-de-gestion-data-labs'
+  },
+  {
+    title: 'Análisis y Limpieza de Datos de Operaciones',
+    description: 'Scripts para la extracción, transformación y carga (ETL) de grandes volúmenes de datos operativos, detectando anomalías y duplicados de forma automatizada.',
+    tools: ['SQL', 'Python (Pandas)', 'Análisis de Datos'],
+    githubLink: 'https://github.com/V0rt3xS0urc3/control-de-gestion-data-labs'
+  }
+];
+---
+
+<section id="projects" class="section">
+  <div class="container">
+    <h2 class="section-title">Proyectos y Prácticas</h2>
+    <p class="section-subtitle">Aplicación práctica de herramientas de análisis de datos, finanzas y control de gestión en escenarios reales.</p>
+
+    <div class="projects-grid">
+      {PROJECTS.map((project) => (
+        <div class="project-card">
+          <div class="project-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+          </div>
+          <h3 class="project-title">{project.title}</h3>
+          <p class="project-desc">{project.description}</p>
+          
+          <div class="project-tools">
+            {project.tools.map(tool => <span class="project-tool-tag">{tool}</span>)}
+          </div>
+
+          <a href={project.githubLink} target="_blank" rel="noopener noreferrer" class="project-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            Ver código en GitHub
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

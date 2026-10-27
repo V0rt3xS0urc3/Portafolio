@@ -1,46 +1,45 @@
-# Astro Starter Kit: Basics
+#  Portafolio Profesional | Diego Arriagada
 
-```sh
-npm create astro@latest -- --template basics
-```
+**Profesional en Logística, Bodega y Operaciones | Control de Gestión**
+📍 Talca, Chile | 📧 diegoarriagadazamora@gmail.com | 🔗 linkedin.com/in/diegoarriagadazamora
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 📌 Sobre este proyecto
+Este repositorio contiene el código fuente de mi portafolio web profesional. Fue diseñado y desarrollado por mí mismo para presentar mi trayectoria en operaciones, logística y seguridad, así como mi formación en Control de Gestión, Análisis de Datos (Power BI, SQL, Python) y sistemas ERP (SAP).
 
-## 🚀 Project Structure
+## ✨ Características Principales
+- 🌓 Modo Oscuro/Claro con persistencia en localStorage.
+- 📱 Diseño 100% Responsivo (móvil, tablet, escritorio).
+- ⚡ Rendimiento optimizado con Astro (Islands Architecture).
+-  UI/UX moderno con tipografías Plus Jakarta Sans e Inter.
+- 📄 Descarga directa del CV en formato PDF.
 
-Inside of your Astro project, you'll see the following folders and files:
+## ️ Stack Tecnológico
+- Framework: Astro
+- Lenguajes: HTML5, CSS3, JavaScript (Vanilla)
+- Despliegue: Netlify (CI/CD desde GitHub)
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+## 📂 Estructura del Proyecto
+- public/ (Contiene el PDF del CV y la foto de perfil)
+- src/components/ (Componentes reutilizables: Navbar, Hero, Experience, etc.)
+- src/layouts/ (Plantilla principal con estilos globales y SEO)
+- src/pages/ (Página principal index.astro)
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 🧞 Comandos de Desarrollo
 
-## 🧞 Commands
+| Comando | Acción |
+| :--- | :--- |
+| npm install | Instala las dependencias del proyecto |
+| npm run dev | Inicia el servidor de desarrollo en localhost:4321 |
+| npm run build | Compila el sitio para producción en la carpeta ./dist/ |
+| npm run preview | Previsualiza la compilación de producción localmente |
+| npm run astro check | Ejecuta el verificador de tipos y errores de Astro |
 
-All commands are run from the root of the project, from a terminal:
+## 📫 Contacto
+¿Interesado en mi perfil para roles de Logística, Operaciones o Control de Gestión?
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+- Web: diegoarriagada.netlify.app
+- Email: diegoarriagadazamora@gmail.com
+- LinkedIn: linkedin.com/in/diegoarriagadazamora
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+---
+*Proyecto en constante evolución, alineado con mi formación continua en análisis de datos y gestión estratégica.*
